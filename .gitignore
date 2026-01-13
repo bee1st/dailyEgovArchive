@@ -1,18 +1,10 @@
-# Build output
-/target/
-*.class
-
-# Eclipse
-.classpath
-.project
-.settings/
-
-# OS / Editor
+**/target/
+**/.classpath
+**/.project
+**/.settings/
+**/.vscode/
+**/.idea/
+*.iml
+**/src/main/resources/egovframework/egovProps/globals.properties
 .DS_Store
 Thumbs.db
-.vscode/
-.idea/
-*.iml
-
-# Secrets (중요: 실제 비번 파일은 커밋 금지)
-src/main/resources/egovframework/egovProps/globals.properties
