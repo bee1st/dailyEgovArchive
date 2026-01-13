@@ -1,18 +1,10 @@
-# Build output
 **/target/
-*.class
-
-# Eclipse
 **/.classpath
 **/.project
 **/.settings/
-
-# OS / Editor
-.DS_Store
-Thumbs.db
 **/.vscode/
 **/.idea/
 *.iml
-
-# Secrets
 **/src/main/resources/egovframework/egovProps/globals.properties
+.DS_Store
+Thumbs.db
