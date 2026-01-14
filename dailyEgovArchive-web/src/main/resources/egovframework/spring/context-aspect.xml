@@ -6,7 +6,7 @@
 
 	<aop:config>
 		<aop:pointcut id="serviceMethod" expression="execution(* egovframework..impl.*Impl.*(..)) or
-													 execution(* legacyProject..*Impl.*(..))" />
+													 execution(* project.archive..*Impl.*(..))" />
 
 		<aop:aspect ref="exceptionTransfer">
 			<aop:after-throwing throwing="exception" pointcut-ref="serviceMethod" method="transfer" />

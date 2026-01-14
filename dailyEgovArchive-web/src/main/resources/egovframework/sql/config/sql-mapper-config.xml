@@ -9,7 +9,7 @@
 	</settings>
 
     <typeAliases>
-		<typeAlias alias="EgovMap" type="org.egovframe.rte.psl.dataaccess.util.EgovMap" />
+		<typeAlias alias="egovMap" type="org.egovframe.rte.psl.dataaccess.util.EgovMap" />
 		<typeAlias alias="hashMap" type="java.util.HashMap" />
     </typeAliases>
 </configuration>
