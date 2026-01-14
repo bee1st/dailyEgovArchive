@@ -4,7 +4,7 @@
 <mapper namespace = "project.archive.notice.service.impl.NoticeMapper">
 
 	<!-- 공지사항 목록 조회 -->
-	<select id="selectNoticeList" resultType="EgovMap">
+	<select id="selectNoticeList" resultType="egovMap">
 	<![CDATA[
 		SELECT NOTICE_ID
 			   , NOTICE_TITLE
@@ -14,6 +14,14 @@
 			   , NOTICE_TOPFIX_YN
 			   , REGISTER
 			   , REGISTED_DATE 
+		  FROM NOTICE
+	]]>
+	</select>
+	
+	<!-- 공지사항 총 목록 건수 -->
+	<select id="noticeListTotalCnt" resultType="int">
+	<![CDATA[
+		SELECT COUNT(*)
 		  FROM NOTICE
 	]]>
 	</select>

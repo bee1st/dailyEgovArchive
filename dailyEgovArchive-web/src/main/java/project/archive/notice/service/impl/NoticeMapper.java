@@ -9,9 +9,13 @@ import org.springframework.stereotype.Repository;
 @Repository("noticeMapper")
 public class NoticeMapper extends EgovAbstractMapper {
 	
-	String namespace = "project.archive.notice.service.impl.NoticeMapper";
+	String NAMESPACE = "project.archive.notice.service.impl.NoticeMapper";
 
 	public List<EgovMap> selectNoticeList() throws Exception {
-		return selectList(namespace + ".selectNoticeList");
+		return selectList(NAMESPACE + ".selectNoticeList");
+	}
+	
+	public int noticeListTotalCnt() throws Exception {
+		return selectOne(NAMESPACE + ".noticeListTotalCnt");
 	}
 }

@@ -1,6 +1,5 @@
 package project.archive.notice.web;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -17,16 +16,20 @@ public class NoticeController {
 
 	@Resource(name="noticeService")
 	private NoticeService noticeService;
+
 	
 	@RequestMapping(value = "/notice.do")
 	public String list(ModelMap model) throws Exception {
 		
-		List<EgovMap> resultList = new ArrayList<>();
-		resultList = noticeService.selectNoticeList();
-		
+		// 목록 조회
+		List<EgovMap> resultList = noticeService.selectNoticeList();
 		model.addAttribute("resultList", resultList);
 		
-		return "notice/list";
+		// 목록 총 건수
+		int count = noticeService.noticeListTotalCnt();
+		model.addAttribute("count", count);
+		
+		return "notice/list.tiles";
 	}
 	
 }

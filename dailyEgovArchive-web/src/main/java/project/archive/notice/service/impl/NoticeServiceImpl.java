@@ -18,4 +18,8 @@ public class NoticeServiceImpl implements NoticeService {
 	public List<EgovMap> selectNoticeList() throws Exception {
 		return noticeMapper.selectNoticeList();
 	}
+	
+	public int noticeListTotalCnt() throws Exception {
+		return noticeMapper.noticeListTotalCnt();
+	}
 }

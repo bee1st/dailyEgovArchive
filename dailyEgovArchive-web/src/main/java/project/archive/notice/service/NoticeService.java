@@ -7,4 +7,6 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 public interface NoticeService {
 
 	public List<EgovMap> selectNoticeList() throws Exception;
+	
+	public int noticeListTotalCnt() throws Exception;
 }

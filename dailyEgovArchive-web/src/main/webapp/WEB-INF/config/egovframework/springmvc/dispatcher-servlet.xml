@@ -7,7 +7,7 @@
                 http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
                 http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
 
-    <context:component-scan base-package="egovframework, legacyProject">
+    <context:component-scan base-package="egovframework, project.archive">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
         <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
@@ -58,8 +58,9 @@
 		</property>
 	</bean>
 
-	<!-- <bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" />
+	<!-- <bean id="beanNameViewResolver" class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0" /> -->
 	
+	<!-- tiles 설정 -->
 	<bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="1"
 		p:viewClass="org.springframework.web.servlet.view.tiles3.TilesView" />
 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
@@ -68,7 +69,8 @@
                 <value>/WEB-INF/config/tiles/tiles-defs.xml</value>
             </list>
         </property>
-    </bean> -->
+    </bean>
+
 
     <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver" p:order="2"
 	    p:viewClass="org.springframework.web.servlet.view.JstlView"
