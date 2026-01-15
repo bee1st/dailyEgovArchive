@@ -7,7 +7,6 @@
 						<tr>	
 							<th scope="col">아이디</th>
 						    <th scope="col">제목</th>
-						    <th scope="col">내용</th>
 						    <th scope="col">등록자</th>
 						    <th scope="col">등록일</th>
 						</tr>
@@ -16,8 +15,7 @@
 						<c:forEach items="${resultList}" var="list">
 							<tr>
 								<td><c:out value="${list.noticeId }" /></td>
-								<td><c:out value="${list.noticeTitle }" /></td>
-								<td><c:out value="${list.noticeContents }" /></td>
+								<td><a href="/notice/view.do?noticeId=<c:out value='${list.noticeId }' />"><c:out value="${list.noticeTitle }" /></td>
 								<td><c:out value="${list.register }" /></td>
 								<td><c:out value="${list.registedDate }" /></td>
 						  </tr>

@@ -9,4 +9,6 @@ public interface NoticeService {
 	public List<EgovMap> selectNoticeList() throws Exception;
 	
 	public int noticeListTotalCnt() throws Exception;
+	
+	public EgovMap selectNoticeView(int noticeId) throws Exception;
 }

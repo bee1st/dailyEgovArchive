@@ -18,4 +18,8 @@ public class NoticeMapper extends EgovAbstractMapper {
 	public int noticeListTotalCnt() throws Exception {
 		return selectOne(NAMESPACE + ".noticeListTotalCnt");
 	}
+	
+	public EgovMap selectNoticeView(int noticeId) throws Exception {
+		return selectOne(NAMESPACE + ".selectNoticeView", noticeId);
+	}
 }

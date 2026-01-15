@@ -25,5 +25,21 @@
 		  FROM NOTICE
 	]]>
 	</select>
+	
+	<!-- 공지사항 상세 조회 -->
+	<select id="selectNoticeView" parameterType="int" resultType="egovMap">
+	<![CDATA[
+		SELECT NOTICE_ID
+			   , NOTICE_TITLE
+			   , NOTICE_CONTENTS
+			   , NOTICE_YN
+			   , NOTICE_HITS
+			   , NOTICE_TOPFIX_YN
+			   , REGISTER
+			   , REGISTED_DATE 
+		  FROM NOTICE
+		 WHERE NOTICE_ID = #{noticeId}
+	]]>
+	</select>
 
 </mapper>

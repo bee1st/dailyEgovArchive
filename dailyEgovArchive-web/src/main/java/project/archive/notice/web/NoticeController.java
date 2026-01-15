@@ -8,6 +8,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import project.archive.notice.service.NoticeService;
 
@@ -32,4 +33,22 @@ public class NoticeController {
 		return "notice/list.tiles";
 	}
 	
+	@RequestMapping(value = "/notice/view.do")
+	public String view(@RequestParam("noticeId") int noticeId, ModelMap model) throws Exception {
+		
+		// 상세 조회
+		EgovMap resultView = noticeService.selectNoticeView(noticeId);
+		model.addAttribute("resultView", resultView);
+		
+		return "notice/view.tiles";
+		
+	}
+	
+	@RequestMapping(value = "/notice/update.do")
+	public String update(@RequestParam("noticeId") int noticeId, ModelMap model) throws Exception {
+		
+		return "notice/update.tiles";
+	}
+	
+		
 }

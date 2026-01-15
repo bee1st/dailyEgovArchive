@@ -3,7 +3,7 @@ package project.archive.notice.service;
 public class NoticeVO {
 
 	/** 아이디 */
-	private String noticeId;
+	private int noticeId;
 	
 	/** 제목 */
 	private String noticeTitle;
@@ -32,11 +32,11 @@ public class NoticeVO {
 	/** 수정일시 */
 	private String modifiedDate;
 
-	public String getNoticeId() {
+	public int getNoticeId() {
 		return noticeId;
 	}
 
-	public void setNoticeId(String noticeId) {
+	public void setNoticeId(int noticeId) {
 		this.noticeId = noticeId;
 	}
 

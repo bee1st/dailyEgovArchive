@@ -22,4 +22,8 @@ public class NoticeServiceImpl implements NoticeService {
 	public int noticeListTotalCnt() throws Exception {
 		return noticeMapper.noticeListTotalCnt();
 	}
+	
+	public EgovMap selectNoticeView(int noticeId) throws Exception {
+		return noticeMapper.selectNoticeView(noticeId);
+	}
 }
