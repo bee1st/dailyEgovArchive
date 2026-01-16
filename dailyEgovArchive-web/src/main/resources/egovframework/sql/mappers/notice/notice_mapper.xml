@@ -15,6 +15,8 @@
 			   , REGISTER
 			   , REGISTED_DATE 
 		  FROM NOTICE
+		 WHERE NOTICE_YN = 'Y'
+		 ORDER BY NOTICE_ID DESC
 	]]>
 	</select>
 	
@@ -23,8 +25,40 @@
 	<![CDATA[
 		SELECT COUNT(*)
 		  FROM NOTICE
+		 WHERE NOTICE_YN = 'Y'
 	]]>
 	</select>
+	
+	<!-- 공지사항 등록 -->
+	<insert id="writeNotice" parameterType="NoticeVO">
+	<selectKey keyProperty="noticeId" resultType="int" order="BEFORE">
+	<![CDATA[
+		SELECT COALESCE(MAX(NOTICE_ID), 0) + 1 AS "noticeId"
+		  FROM NOTICE
+	]]>
+	</selectKey>
+   <![CDATA[
+      INSERT INTO NOTICE (
+            NOTICE_ID
+          , NOTICE_TITLE
+		  , NOTICE_CONTENTS
+		  , NOTICE_YN
+		  , NOTICE_HITS
+		  , NOTICE_TOPFIX_YN
+		  , REGISTER
+		  , REGISTED_DATE 
+      ) VALUES (
+            #{noticeId}
+          , #{noticeTitle}
+          , #{noticeContents}
+          , 'Y'
+          , 0
+          , 'N'
+          , #{register}
+          , now()
+      )
+   ]]>
+   </insert>
 	
 	<!-- 공지사항 상세 조회 -->
 	<select id="selectNoticeView" parameterType="int" resultType="egovMap">
@@ -39,7 +73,30 @@
 			   , REGISTED_DATE 
 		  FROM NOTICE
 		 WHERE NOTICE_ID = #{noticeId}
+		   AND NOTICE_YN = 'Y'
 	]]>
 	</select>
-
+	
+	<!-- 공지사항 수정 -->
+	<update id="updateNotice" parameterType="NoticeVO">
+	<![CDATA[
+		UPDATE NOTICE
+		   SET NOTICE_TITLE = #{noticeTitle}
+		   	   , NOTICE_CONTENTS = #{noticeContents}
+		   	   , REGISTER = #{register}
+		   	   , REGISTED_DATE = now()
+		 WHERE NOTICE_ID = #{noticeId}
+		   
+	]]>
+	</update>
+	
+	<!-- 공지사항 삭제(사용안함) -->
+	<update id="deleteNotice">
+	<![CDATA[
+		UPDATE NOTICE
+		   SET NOTICE_YN = 'N'
+		 WHERE NOTICE_ID = #{noticeId}
+			   
+	]]>
+	</update>	   
 </mapper>

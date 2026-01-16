@@ -22,3 +22,7 @@
 						</c:forEach>
 					</tbody>
 				</table>
+				
+				<fieldset>
+					<a href="/notice/insert.do">등록</a>
+				</fieldset>

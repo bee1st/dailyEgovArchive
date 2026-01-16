@@ -6,6 +6,8 @@ import org.egovframe.rte.psl.dataaccess.EgovAbstractMapper;
 import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import org.springframework.stereotype.Repository;
 
+import project.archive.notice.service.NoticeVO;
+
 @Repository("noticeMapper")
 public class NoticeMapper extends EgovAbstractMapper {
 	
@@ -19,7 +21,19 @@ public class NoticeMapper extends EgovAbstractMapper {
 		return selectOne(NAMESPACE + ".noticeListTotalCnt");
 	}
 	
+	public int writeNotice(NoticeVO noticeVO) throws Exception {
+		return insert(NAMESPACE + ".writeNotice", noticeVO);
+	}
+	
 	public EgovMap selectNoticeView(int noticeId) throws Exception {
 		return selectOne(NAMESPACE + ".selectNoticeView", noticeId);
+	}
+	
+	public int updateNotice(NoticeVO noticeVO) throws Exception {
+		return update(NAMESPACE + ".updateNotice", noticeVO);
+	}
+	
+	public int deleteNotice(int noticeId) throws Exception {
+		return update(NAMESPACE + ".deleteNotice", noticeId);
 	}
 }

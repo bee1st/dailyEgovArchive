@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-			<form action="/notice/edit.do" method="post">
-				<div>
-					<input type="hidden" id="noticeId" name="noticeId" value="<c:out value='${resultView.noticeId}' />" />
-				</div>
+			<form action="/notice/write.do" method="post">
 				<div>
 					<label for="noticeTitle">제목</label>
 					<input type="text" id="noticeTitle" name="noticeTitle" />
@@ -22,10 +19,8 @@
 					<input type="hidden" id="registedDate" name="registedDate" value="<fmt:formatDate value='${resultView.registedDate}' pattern='yyyy-MM-dd' />" />
 				</div>
 				
-				
 				<fieldset>
-					<button type="submit">수정</button>
-					<a href="/notice.do">목록</a>
-					<a href="/notice/delete.do?noticeId=<c:out value='${resultView.noticeId}' />">삭제</a>
+					<button type="submit">등록</button>
+					<a href="/notice.do">취소</a>
 				</fieldset>
 			</form>

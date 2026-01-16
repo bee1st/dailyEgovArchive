@@ -8,6 +8,7 @@ import org.egovframe.rte.psl.dataaccess.util.EgovMap;
 import org.springframework.stereotype.Service;
 
 import project.archive.notice.service.NoticeService;
+import project.archive.notice.service.NoticeVO;
 
 @Service("noticeService")
 public class NoticeServiceImpl implements NoticeService {
@@ -23,7 +24,19 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeMapper.noticeListTotalCnt();
 	}
 	
+	public int writeNotice(NoticeVO noticeVO) throws Exception {
+		return noticeMapper.writeNotice(noticeVO);
+	}
+	
 	public EgovMap selectNoticeView(int noticeId) throws Exception {
 		return noticeMapper.selectNoticeView(noticeId);
+	}
+	
+	public int updateNotice(NoticeVO noticeVO) throws Exception {
+		return noticeMapper.updateNotice(noticeVO);
+	}
+	
+	public int deleteNotice(int noticeId) throws Exception {
+		return noticeMapper.deleteNotice(noticeId);
 	}
 }
