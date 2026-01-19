@@ -13,7 +13,7 @@
 			   , NOTICE_HITS
 			   , NOTICE_TOPFIX_YN
 			   , REGISTER
-			   , REGISTED_DATE 
+			   , TO_CHAR(REGISTED_DATE, 'YYYY-MM-DD') AS REGISTED_DATE
 		  FROM NOTICE
 		 WHERE NOTICE_YN = 'Y'
 		 ORDER BY NOTICE_ID DESC
@@ -46,7 +46,6 @@
 		  , NOTICE_HITS
 		  , NOTICE_TOPFIX_YN
 		  , REGISTER
-		  , REGISTED_DATE 
       ) VALUES (
             #{noticeId}
           , #{noticeTitle}
@@ -55,7 +54,6 @@
           , 0
           , 'N'
           , #{register}
-          , now()
       )
    ]]>
    </insert>
@@ -86,6 +84,7 @@
 		   	   , REGISTER = #{register}
 		   	   , REGISTED_DATE = now()
 		 WHERE NOTICE_ID = #{noticeId}
+		   AND NOTICE_YN = 'Y'
 		   
 	]]>
 	</update>

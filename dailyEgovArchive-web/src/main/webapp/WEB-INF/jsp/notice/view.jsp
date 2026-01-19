@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+			<form id="noticeVO" name="noticeVO" method="post">
+				<input type="hidden" name="noticeId" value="<c:out value='${resultView.noticeId}'/>" />
 				<table>
 					<caption>공지사항 상세화면</caption>
 					<thead>
@@ -23,8 +25,25 @@
 				</table>
 				
 				<fieldset>
-					<a href="/notice/update.do?noticeId=<c:out value='${resultView.noticeId}' />">수정</a>
-					<a href="/notice.do">목록</a>
-					<a href="/notice/delete.do?noticeId=<c:out value='${resultView.noticeId}' />">삭제</a>
+					<a href="#self" onclick="fnUpdate(); return false;">수정</a>
+					<a href="#self" onclick="fnGoList(); return false;">목록</a>
+					<a href="#self" onclick="fnDelete(); return false;">삭제</a>
 				</fieldset>
+			</form>
+			
+<script type="text/javascript">
+function fnUpdate() {
+	$("#noticeVO").attr("action", "<c:url value='/notice/update.do' />").submit();
+	
+}
+
+function fnGoList() {
+	$("#noticeVO").attr("action", "<c:url value='/notice.do' />").submit();
+}
+
+function fnDelete() {
+	$("#noticeVO").attr("action", "<c:url value='/notice/delete.do' />").submit();
+}
+
+</script>
 				

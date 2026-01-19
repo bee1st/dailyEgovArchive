@@ -15,7 +15,7 @@
 						<c:forEach items="${resultList}" var="list">
 							<tr>
 								<td><c:out value="${list.noticeId }" /></td>
-								<td><a href="/notice/view.do?noticeId=<c:out value='${list.noticeId }' />"><c:out value="${list.noticeTitle }" /></td>
+								<td><a href="/notice/view.do?noticeId=<c:out value='${list.noticeId }' />"><c:out value="${list.noticeTitle }" /></a></td>
 								<td><c:out value="${list.register }" /></td>
 								<td><c:out value="${list.registedDate }" /></td>
 						  </tr>
