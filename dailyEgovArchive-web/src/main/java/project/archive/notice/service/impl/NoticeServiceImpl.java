@@ -28,7 +28,7 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeMapper.writeNotice(noticeVO);
 	}
 	
-	public EgovMap selectNoticeView(int noticeId) throws Exception {
+	public NoticeVO selectNoticeView(int noticeId) throws Exception {
 		return noticeMapper.selectNoticeView(noticeId);
 	}
 	

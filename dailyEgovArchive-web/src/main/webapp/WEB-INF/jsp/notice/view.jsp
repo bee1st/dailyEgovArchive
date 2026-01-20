@@ -33,12 +33,12 @@
 			
 <script type="text/javascript">
 function fnUpdate() {
-	$("#noticeVO").attr("action", "<c:url value='/notice/update.do' />").submit();
+	$("#noticeVO").attr("action", "<c:url value='/notice/form.do' />").submit();
 	
 }
 
 function fnGoList() {
-	$("#noticeVO").attr("action", "<c:url value='/notice.do' />").submit();
+	location.href = "<c:url value='/notice.do' />";
 }
 
 function fnDelete() {

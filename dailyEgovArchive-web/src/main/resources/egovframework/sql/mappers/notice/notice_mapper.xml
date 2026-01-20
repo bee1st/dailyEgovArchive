@@ -59,7 +59,7 @@
    </insert>
 	
 	<!-- 공지사항 상세 조회 -->
-	<select id="selectNoticeView" parameterType="int" resultType="egovMap">
+	<select id="selectNoticeView" parameterType="int" resultType="NoticeVO">
 	<![CDATA[
 		SELECT NOTICE_ID
 			   , NOTICE_TITLE
@@ -81,8 +81,11 @@
 		UPDATE NOTICE
 		   SET NOTICE_TITLE = #{noticeTitle}
 		   	   , NOTICE_CONTENTS = #{noticeContents}
-		   	   , REGISTER = #{register}
-		   	   , REGISTED_DATE = now()
+		   	   , NOTICE_YN = #{noticeYn}
+		   	   , NOTICE_HITS = #{noticeHits}
+		   	   , NOTICE_TOPFIX_YN = #{noticeTopfixYn}
+		   	   , MODIFIER = #{register}
+		   	   , MODIFIED_DATE = now()
 		 WHERE NOTICE_ID = #{noticeId}
 		   AND NOTICE_YN = 'Y'
 		   

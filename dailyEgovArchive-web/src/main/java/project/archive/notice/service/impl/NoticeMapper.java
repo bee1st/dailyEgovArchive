@@ -25,7 +25,7 @@ public class NoticeMapper extends EgovAbstractMapper {
 		return insert(NAMESPACE + ".writeNotice", noticeVO);
 	}
 	
-	public EgovMap selectNoticeView(int noticeId) throws Exception {
+	public NoticeVO selectNoticeView(int noticeId) throws Exception {
 		return selectOne(NAMESPACE + ".selectNoticeView", noticeId);
 	}
 	

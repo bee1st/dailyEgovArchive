@@ -24,5 +24,5 @@
 				</table>
 				
 				<fieldset>
-					<a href="/notice/insert.do">등록</a>
+					<a href="<c:url value='/notice/form.do' />">등록</a>
 				</fieldset>

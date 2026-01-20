@@ -12,7 +12,7 @@ public interface NoticeService {
 	
 	public int writeNotice(NoticeVO noticeVO) throws Exception;
 	
-	public EgovMap selectNoticeView(int noticeId) throws Exception;
+	public NoticeVO selectNoticeView(int noticeId) throws Exception;
 
 	public int updateNotice(NoticeVO noticeVO) throws Exception;
 

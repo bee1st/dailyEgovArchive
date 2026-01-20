@@ -39,22 +39,24 @@ public class NoticeController {
 	public String view(@RequestParam("noticeId") int noticeId, ModelMap model) throws Exception {
 		
 		// 상세 조회
-		EgovMap resultView = noticeService.selectNoticeView(noticeId);
+		NoticeVO resultView = noticeService.selectNoticeView(noticeId);
 		model.addAttribute("resultView", resultView);
 		
-		if (resultView == null || resultView.isEmpty()) {
+		if (resultView == null || resultView.getNoticeId() < 0) {
 			return "redirect:/notice.do";
 		}
 		
 		return "notice/view.tiles";
 		
 	}
-	
+
+/*
 	@RequestMapping(value = "/notice/insert.do")
 	public String insert() throws Exception {
 		
 		return "notice/insert.tiles";
 	}
+*/
 	
 	@RequestMapping(value = "/notice/write.do", method=RequestMethod.POST)
 	public String write(NoticeVO noticeVO) throws Exception {
@@ -68,20 +70,22 @@ public class NoticeController {
 		}
 		
 	}
-	
+
+/*
 	@RequestMapping(value = "/notice/update.do")
 	public String update(@RequestParam("noticeId") int noticeId, ModelMap model) throws Exception {
 		
 		// 상세 조회
-		EgovMap resultView = noticeService.selectNoticeView(noticeId);
+		NoticeVO resultView = noticeService.selectNoticeView(noticeId);
 		model.addAttribute("resultView", resultView);
 		
-		if (resultView == null || resultView.isEmpty()) {
+		if (resultView == null || resultView.getNoticeId() < 0) {
 			return "redirect:/notice.do";
 		}
 		
 		return "notice/update.tiles";
 	}
+*/	
 	
 	@RequestMapping(value = "/notice/edit.do", method=RequestMethod.POST)
 	public String edit(NoticeVO noticeVO) throws Exception {
@@ -107,25 +111,17 @@ public class NoticeController {
 		}
 	}
 	
-	@RequestMapping(value="/notice/form.do")
-	public String form(@RequestParam(value="noticeId", required=false) Integer noticeId, ModelMap model) throws Exception {
-		
-		// 1) 수정 모드
-		if (noticeId != null) {
-			EgovMap resultForm = noticeService.selectNoticeView(noticeId);
-			
-			if (resultForm == null || resultForm.isEmpty()) {
+	// 등록 & 수정 화면
+	@RequestMapping(value = "/notice/form.do")
+	public String form(@RequestParam(value = "noticeId", defaultValue = "0") int noticeId, ModelMap model) throws Exception {
+		NoticeVO noticeVO = new NoticeVO();
+		if (noticeId != 0) {
+			noticeVO = noticeService.selectNoticeView(noticeId);
+			if (noticeVO == null) {
 				return "redirect:/notice.do";
 			}
-			
-			model.addAttribute("resultForm", resultForm);
-			model.addAttribute("mode", "Update");
-			return "notice/form.tiles";
 		}
-		
-		// 2) 등록 모드
-		model.addAttribute("mode", "Insert");
+		model.addAttribute("result", noticeVO);
 		return "notice/form.tiles";
-		
 	}
 }
