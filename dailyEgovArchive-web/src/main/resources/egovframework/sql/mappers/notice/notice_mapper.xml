@@ -50,9 +50,9 @@
             #{noticeId}
           , #{noticeTitle}
           , #{noticeContents}
-          , 'Y'
+          , #{noticeYn}
           , 0
-          , 'N'
+          , #{noticeTopfixYn}
           , #{register}
       )
    ]]>
@@ -62,13 +62,15 @@
 	<select id="selectNoticeView" parameterType="int" resultType="NoticeVO">
 	<![CDATA[
 		SELECT NOTICE_ID
-			   , NOTICE_TITLE
-			   , NOTICE_CONTENTS
-			   , NOTICE_YN
-			   , NOTICE_HITS
-			   , NOTICE_TOPFIX_YN
-			   , REGISTER
-			   , REGISTED_DATE 
+			   , NOTICE_TITLE		              AS "noticeTitle"
+			   , NOTICE_CONTENTS                  AS "noticeContents"
+			   , NOTICE_HITS                      AS "noticeHits"
+			   , NOTICE_TOPFIX_YN 				  AS "noticeTopfixYn"
+		 	   , NOTICE_YN						  AS "noticeYn"
+			   , REGISTER                         AS "register"
+			   , REGISTED_DATE                    AS "registedDate"
+			   , MODIFIER                         AS "modifier"
+			   , MODIFIED_DATE                    AS "modifiedDate"
 		  FROM NOTICE
 		 WHERE NOTICE_ID = #{noticeId}
 		   AND NOTICE_YN = 'Y'
@@ -82,9 +84,8 @@
 		   SET NOTICE_TITLE = #{noticeTitle}
 		   	   , NOTICE_CONTENTS = #{noticeContents}
 		   	   , NOTICE_YN = #{noticeYn}
-		   	   , NOTICE_HITS = #{noticeHits}
 		   	   , NOTICE_TOPFIX_YN = #{noticeTopfixYn}
-		   	   , MODIFIER = #{register}
+		   	   , MODIFIER = #{modifier}
 		   	   , MODIFIED_DATE = now()
 		 WHERE NOTICE_ID = #{noticeId}
 		   AND NOTICE_YN = 'Y'
@@ -92,7 +93,7 @@
 	]]>
 	</update>
 	
-	<!-- 공지사항 삭제(사용안함) -->
+	<!-- 공지사항 삭제(소프트삭제) -->
 	<update id="deleteNotice">
 	<![CDATA[
 		UPDATE NOTICE
@@ -100,5 +101,15 @@
 		 WHERE NOTICE_ID = #{noticeId}
 			   
 	]]>
-	</update>	   
+	</update>
+	
+	<!-- 조회수 증가 -->
+	<update id="hitsPlusCnt">
+	<![CDATA[
+		UPDATE NOTICE
+		   SET NOTICE_HITS = NOTICE_HITS + 1
+		 WHERE NOTICE_ID = #{noticeId}
+		   AND NOTICE_YN = 'Y'
+	]]>
+	</update>
 </mapper>

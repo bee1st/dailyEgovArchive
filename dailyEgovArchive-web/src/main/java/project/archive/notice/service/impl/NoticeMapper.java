@@ -25,6 +25,10 @@ public class NoticeMapper extends EgovAbstractMapper {
 		return insert(NAMESPACE + ".writeNotice", noticeVO);
 	}
 	
+	public int hitsPlusCnt(int noticeId) throws Exception {
+		return update(NAMESPACE + ".hitsPlusCnt", noticeId); 
+	}
+	
 	public NoticeVO selectNoticeView(int noticeId) throws Exception {
 		return selectOne(NAMESPACE + ".selectNoticeView", noticeId);
 	}

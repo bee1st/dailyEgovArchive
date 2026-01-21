@@ -28,6 +28,10 @@ public class NoticeServiceImpl implements NoticeService {
 		return noticeMapper.writeNotice(noticeVO);
 	}
 	
+	public int hitsPlusCnt(int noticeId) throws Exception {
+		return noticeMapper.hitsPlusCnt(noticeId); 
+	}
+	
 	public NoticeVO selectNoticeView(int noticeId) throws Exception {
 		return noticeMapper.selectNoticeView(noticeId);
 	}

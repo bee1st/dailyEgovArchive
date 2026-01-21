@@ -40,11 +40,17 @@ public class NoticeController {
 		
 		// 상세 조회
 		NoticeVO resultView = noticeService.selectNoticeView(noticeId);
-		model.addAttribute("resultView", resultView);
-		
-		if (resultView == null || resultView.getNoticeId() < 0) {
+		if (resultView == null) {
 			return "redirect:/notice.do";
 		}
+		
+		// 조회수 증가
+		int hitsPlusCnt = noticeService.hitsPlusCnt(noticeId);
+		if (hitsPlusCnt == 1) {
+			resultView.setNoticeHits(resultView.getNoticeHits() + 1);
+		}
+		
+		model.addAttribute("resultView", resultView);
 		
 		return "notice/view.tiles";
 		
@@ -60,11 +66,16 @@ public class NoticeController {
 	
 	@RequestMapping(value = "/notice/write.do", method=RequestMethod.POST)
 	public String write(NoticeVO noticeVO) throws Exception {
+
+		if (noticeVO.getNoticeTitle() == null || noticeVO.getRegister() == null || 
+			noticeVO.getNoticeTitle().isEmpty() || noticeVO.getRegister().isEmpty()) {
+			return "redirect:/notice/form.do";
+		}
 		
 		// 등록
 		int result = noticeService.writeNotice(noticeVO);
 		if (result > 0) {
-			return "redirect:/notice.do?noticeId=" + noticeVO.getNoticeId();
+			return "redirect:/notice/view.do?noticeId=" + noticeVO.getNoticeId();
 		} else {
 			return "redirect:/notice/insert.do";
 		}
@@ -90,12 +101,16 @@ public class NoticeController {
 	@RequestMapping(value = "/notice/edit.do", method=RequestMethod.POST)
 	public String edit(NoticeVO noticeVO) throws Exception {
 		
+		if (noticeVO.getNoticeTitle() == null || noticeVO.getNoticeTitle().isEmpty()) {
+			return "redirect:/notice/form.do";
+		}
+		
 		// 수정
 		int result = noticeService.updateNotice(noticeVO);
 		if (result > 0) {
 			return "redirect:/notice.do?noticeId=" + noticeVO.getNoticeId();
 		} else {
-			return "redirect:/notice/update.do?noticeId=" + noticeVO.getNoticeId();
+			return "redirect:/notice/form.do?noticeId=" + noticeVO.getNoticeId();
 		}
 		
 	}

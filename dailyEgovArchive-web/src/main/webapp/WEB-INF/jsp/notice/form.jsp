@@ -46,12 +46,12 @@
 		</c:if>
 		<c:if test="${result.noticeId > 0}">
 			<c:out value="${result.register}" />
-			<input type="hidden" id="register" name="register" value="<c:out value='${result.register}' />" />
+			<input type="hidden" id="modifier" name="modifier" value="<c:out value='${result.register}' />" />
 		</c:if>
 	</div>
 	<c:if test="${result.noticeId eq 0}">
 		<button type="button" onclick="fnInsert(); return false;">등록</button>
-		<button type="button" onclick="fnList(); return false;">취소</button>
+		<button type="button" onclick="fnGoList(); return false;">취소</button>
 	</c:if>
 	<c:if test="${result.noticeId > 0}">
 		<button type="button" onclick="fnUpdate(); return false;">수정</button>

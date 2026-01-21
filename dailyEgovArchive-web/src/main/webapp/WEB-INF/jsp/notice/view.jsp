@@ -9,8 +9,13 @@
 							<th scope="col">아이디</th>
 						    <th scope="col">제목</th>
 						    <th scope="col">내용</th>
+						    <th scope="col">조회수</th>
+						    <th scope="col">공지여부</th>
+						    <th scope="col">상단고정여부</th>
 						    <th scope="col">등록자</th>
 						    <th scope="col">등록일</th>
+						    <th scope="col">수정자</th>
+						    <th scope="col">수정일</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -18,8 +23,23 @@
 							<td><c:out value="${resultView.noticeId}" /></td>
 							<td><c:out value="${resultView.noticeTitle }" /></td>
 							<td><c:out value="${resultView.noticeContents }" /></td>
+							<td><c:out value="${resultView.noticeHits }" /></td>
+							<td>
+								<c:choose>
+									<c:when	test="${resultView.noticeYn eq 'Y' }">예</c:when>
+									<c:otherwise>아니오</c:otherwise>
+								</c:choose>
+							</td>
+							<td>
+								<c:choose>
+									<c:when	test="${resultView.noticeTopfixYn eq 'Y' }">예</c:when>
+									<c:otherwise>아니오</c:otherwise>
+								</c:choose>
+							</td>
 							<td><c:out value="${resultView.register }" /></td>
 							<td><c:out value="${resultView.registedDate }" /></td>
+							<td><c:out value="${resultView.modifier }" /></td>
+							<td><c:out value="${resultView.modifiedDate }" /></td>
 					  </tr>
 					</tbody>
 				</table>
